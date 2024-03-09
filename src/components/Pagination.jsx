@@ -1,25 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function Pagination({ charactersPerPage, totalCharacters, paginate,currentPage }) {
-  // const pageNumbers = [];
-  // // const [currentPage, setCurrentPage] = React.useState(paginate);
-
-
-  // for (let i = 1; i <= Math.ceil(totalCharacters / charactersPerPage); i++) {
-  //   pageNumbers.push(i);
-  //   // console.log(totalCharacters, charactersPerPage);
-  // }
-  // console.log(currentPage);
+   // Calculate the total number of pages
   const totalPages = Math.ceil(totalCharacters / charactersPerPage);
+  // Number of pages to show in the pagination control
   const pagesToShow = 5;
 
+  // Function to calculate the range of pages to display
   const calculateRange = () => {
     const startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
     const endPage = Math.min(totalPages, startPage + pagesToShow - 1);
     return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
   };
 
+   // Array containing the range of pages to display
   const pageNumbers = calculateRange();
 
   return (
@@ -27,14 +21,16 @@ function Pagination({ charactersPerPage, totalCharacters, paginate,currentPage }
     {pageNumbers.length > 1 &&
     (<div className="flex absolute w-full mx-auto bottom-2 items-center justify-around  px-4 py-3 sm:px-6">
       <div className="flex flex-2 justify-between bg-gray-100">
+         {/* Previous button */}
         <button  onClick={() => {
           paginate(currentPage - 1);
         }} className="relative inline-flex border items-center rounded-md  border-gray-400 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" disabled={currentPage === 1 ?true: false}>
           Previous
         </button>
-      {pageNumbers.length > 1 && (
-        <div>
-          <nav
+         {/* Display page numbers */}
+         {pageNumbers.length > 1 && (
+            <div>
+             <nav
             className="isolate inline-flex -space-x-px rounded-md shadow-sm"
             aria-label="Pagination"
           >
@@ -56,10 +52,11 @@ function Pagination({ charactersPerPage, totalCharacters, paginate,currentPage }
           </nav>
         </div>
       )}
+       {/* Next button */}
          <button  onClick={() => {
           paginate(currentPage + 1);
-        }} className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" disabled={currentPage === totalPages ? true: false}>
-          Next
+            }} className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" disabled={currentPage === totalPages ? true: false}>
+                 Next
         </button>
       </div>
     </div>)}

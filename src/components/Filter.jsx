@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import { searchCharacters } from "../services/api";
 
 function Filter({ characters, setCharacters,setTotalReacords }) {
+   // State variable to store the filter value
   const [filter, setFilter] = useState("");
 
+  // Function to handle changes in the search input
   const handleFilter = (e) => {
     const value = e.target.value.toLowerCase();
     setFilter(value);
   };
 
-
+ // useEffect hook to trigger a delayed search request when the filter changes
   React.useEffect(() => {
+    // Use setTimeout to introduce a delay before making the search request
     const getData = setTimeout(() => {
+      // Fetch data based on the search filter using the searchCharacters function
       searchCharacters(filter).then((data) => {
+         // Handle errors and update the state with the search results
         if (data.error) {
           setCharacters([]);
           setTotalReacords(0);
@@ -22,7 +27,7 @@ function Filter({ characters, setCharacters,setTotalReacords }) {
         }
       });
     }, 500)
-
+ // Cleanup function to clear the timeout when the component unmounts or filter changes
     return () => clearTimeout(getData)
   }, [filter,setTotalReacords,setCharacters])
 
@@ -54,6 +59,7 @@ function Filter({ characters, setCharacters,setTotalReacords }) {
               />
             </svg>
           </div>
+           {/* Search input field */}
           <input
             type="search"
             id="default-search"

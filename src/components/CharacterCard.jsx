@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import {  useNavigate } from 'react-router-dom';
 
 function CharacterCard({ character }) {
     var router = useNavigate()
+     // Function to handle navigation to the detailed character page
     function handleDetailRoute(id) {
+         // Use the router to navigate to the character details page with the specified ID
         router(`/character/${character.id}`)
     }
     return (
@@ -12,7 +14,7 @@ function CharacterCard({ character }) {
                 <div className="aspect-h-1 aspect-w-1 rounded-t-lg w-full overflow-hidden bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                     <img src={character.image} alt={character.name} className="h-full w-full object-cover object-center group-hover:opacity-75" />
                 </div>
-                <div className='mt-4 px-2 pb-2 '>
+                <div className='mt-4 px-2 pb-2'>
                     <h3 className="text-2xl font-bold text-gray-700">{character.name}</h3>
                     <p className="text-lg font-medium text-gray-900">Type: {character.type}</p>
                     <p className="text-lg font-medium text-gray-900">Total Episodes: {character.episode.length}</p>
