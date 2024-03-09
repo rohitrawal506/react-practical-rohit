@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CharactersPage from "./pages/CharactersPage";
+import CharacterDetailsPage from "./pages/CharacterDetailsPage";
+import "./tailwind.css";
+import EpisodePage from "./pages/EpisodePage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div
+        className="bg-fixed bg-no-repeat bg-center bg-cover bg-slate-300"
+        style={{ backgroundImage: "url(/new-image.jpeg)" }}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<CharactersPage />} />
+            <Route path="/character/:id" element={<CharacterDetailsPage />} />
+            <Route path="/episode/:id" element={<EpisodePage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
   );
 }
 
