@@ -1,6 +1,5 @@
 import React from "react";
 
-// Functional component for displaying character information
 function CharacterInformation({ character }) {
 
   return (

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { searchCharacters } from "../services/api";
 
 interface FilterProps {
-  characters: any[]; // Adjust the type accordingly
-  setCharacters: React.Dispatch<React.SetStateAction<any[]>>; // Adjust the type accordingly
+  characters: any[];
+  setCharacters: React.Dispatch<React.SetStateAction<any[]>>;
   setTotalReacords: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -11,7 +11,6 @@ const Filter: React.FC<FilterProps> = ({ characters, setCharacters, setTotalReac
   // State variable to store the filter value
   const [filter, setFilter] = useState("");
 
-  // Function to handle changes in the search input
   const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
     setFilter(value);
@@ -23,7 +22,6 @@ const Filter: React.FC<FilterProps> = ({ characters, setCharacters, setTotalReac
     const getData = setTimeout(() => {
       // Fetch data based on the search filter using the searchCharacters function
       searchCharacters(filter).then((data) => {
-        // Handle errors and update the state with the search results
         if (data.error) {
           setCharacters([]);
           setTotalReacords(0);

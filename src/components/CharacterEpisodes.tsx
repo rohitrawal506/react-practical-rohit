@@ -6,11 +6,9 @@ interface CharacterEpisodeProps {
 }
 
 const CharacterEpisode: React.FC<CharacterEpisodeProps> = ({ character }) => {
-  // State variables for managing modal state and selected episode ID
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [episodeId, setEpisodeId] = useState<number>(1);
 
-  // Function to open the modal and set the selected episode ID
   const openModal = (id: number) => {
     setModalOpen(true);
     setEpisodeId(id);
@@ -18,7 +16,6 @@ const CharacterEpisode: React.FC<CharacterEpisodeProps> = ({ character }) => {
 
   return (
     <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-3 sm:grid-cols-2 bg-gray-200">
-      {/* Map over each episode and create a button for opening the modal */}
       {character &&
         character?.episode?.map((item, index) => {
           return (
@@ -42,7 +39,7 @@ const CharacterEpisode: React.FC<CharacterEpisodeProps> = ({ character }) => {
             </button>
           );
         })}
-      
+
       {/* Render the EpisodeModal component when modalOpen is true */}
       {modalOpen && <EpisodeModal setModalOpen={setModalOpen} episodeId={episodeId} />}
     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Functional component for displaying a character card
 function CharacterCard({ character }) {
   // Access the router for navigation
   var router = useNavigate();
