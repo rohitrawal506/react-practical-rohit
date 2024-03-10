@@ -6,19 +6,17 @@ import "./tailwind.css";
 
 function App() {
   return (
-    <>
-      <div
-        className="bg-fixed bg-no-repeat bg-center bg-cover bg-slate-300"
-        style={{ backgroundImage: "url(/new-image.jpeg)" }}
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<CharactersPage />} />
-            <Route path="/character/:id" element={<CharacterDetailsPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </>
+    <div
+      className="bg-fixed bg-no-repeat bg-center bg-cover bg-slate-300"
+      style={{ backgroundImage: "url(/new-image.jpeg)" }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CharactersPage />} />
+          <Route path="/character/:id" element={<CharacterDetailsPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

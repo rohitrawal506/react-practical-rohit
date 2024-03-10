@@ -1,4 +1,4 @@
-const API_URL = "https://rickandmortyapi.com/api";
+import { API_URL } from "../constants/constants";
 
 export const getCharacters = async (currentPage) => {
   const response = await fetch(`${API_URL}/character?page=${currentPage}`);

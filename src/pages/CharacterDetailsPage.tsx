@@ -4,12 +4,9 @@ import { getCharacterById } from "../services/api";
 import CharacterInformation from "../components/CharacterInformation.tsx";
 import CharacterEpisode from "../components/CharacterEpisodes.tsx";
 
-interface CharacterDetailsPageProps {}
 
-const CharacterDetailsPage: React.FC<CharacterDetailsPageProps> = () => {
-  // Extracting the character ID from the URL parameters
+const CharacterDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
-  // State variable to store the details of the selected character
   const [character, setCharacter] = useState<any>({});
 
   useEffect(() => {
@@ -21,9 +18,7 @@ const CharacterDetailsPage: React.FC<CharacterDetailsPageProps> = () => {
 
   return (
     <>
-      {/* Display the character image in a larger view for larger screens */}
       <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
-        {/* Display character image for larger screens */}
         <div className="xl:w-1/4 lg:w-2/5 w-80 lg:block hidden">
           <img
             className="w-full drop-shadow-xl"
@@ -31,7 +26,6 @@ const CharacterDetailsPage: React.FC<CharacterDetailsPageProps> = () => {
             alt={character?.name}
           />
         </div>
-        {/* Display character image for smaller screens */}
         <div className="lg:hidden">
           <img
             className="w-full drop-shadow-xl"
@@ -39,11 +33,9 @@ const CharacterDetailsPage: React.FC<CharacterDetailsPageProps> = () => {
             alt={character?.name}
           />
         </div>
-        {/* Render the character information section */}
         <CharacterInformation character={character} />
       </div>
       <hr className="border-black-200" />
-      {/* Render the character episodes section */}
       <CharacterEpisode character={character} />
     </>
   );
