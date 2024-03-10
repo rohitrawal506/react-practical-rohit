@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CharactersPage from "./pages/CharactersPage";
-import CharacterDetailsPage from "./pages/CharacterDetailsPage";
+import CharactersPage from "./pages/CharactersPage.tsx";
+import CharacterDetailsPage from "./pages/CharacterDetailsPage.tsx";
 import "./tailwind.css";
-import EpisodePage from "./pages/EpisodePage";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Routes>
             <Route path="/" element={<CharactersPage />} />
             <Route path="/character/:id" element={<CharacterDetailsPage />} />
-            <Route path="/episode/:id" element={<EpisodePage />} />
           </Routes>
         </BrowserRouter>
       </div>
