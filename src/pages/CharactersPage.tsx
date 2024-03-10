@@ -4,7 +4,7 @@ import Pagination from "../components/Pagination.tsx";
 import Filter from "../components/Filter.tsx";
 import { getCharacters } from "../services/api";
 
-interface CharactersPageProps {}
+interface CharactersPageProps { }
 
 const CharactersPage: React.FC<CharactersPageProps> = () => {
   const [characters, setCharacters] = useState<any[]>([]);
@@ -30,9 +30,8 @@ const CharactersPage: React.FC<CharactersPageProps> = () => {
     <>
       <div className="bg-white"></div>
       <div
-        className={`mx-auto max-w-2xl px-4 relative  py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px- 8 ${
-          characters?.length === 0 ? "h-lvh" : ""
-        }`}
+        className={`mx-auto max-w-2xl px-4 relative  py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px- 8 ${characters?.length === 0 ? "h-lvh" : ""
+          }`}
       >
         <div className="mx-auto flex">
           <h1 className="text-3xl font-bold text-gray-900 mx-auto font-mono">
@@ -48,15 +47,15 @@ const CharactersPage: React.FC<CharactersPageProps> = () => {
         />
 
         {/* Render the list of characters */}
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {characters.length > 0 ? (
-            characters?.map((character) => (
+        {characters?.length > 0 ? (
+          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            {characters?.map((character) => (
               <CharacterCard key={character?.id} character={character} />
-            ))
-          ) : (
-            <p>NO Character Found</p>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p className="lg:w-2/6 text-3xl font-bold text-gray-900 mx-auto font-mono text-center bg-gray-50">No Character Found</p>
+        )}
 
         {/* Render pagination controls */}
         <Pagination
